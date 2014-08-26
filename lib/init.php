@@ -5,6 +5,17 @@ if ((float)PCRE_VERSION < 7.9)
 
 // Get framework instance
 $fw = require("base.php");
+$fw->mset(array(
+	"UI" => "app/view/",
+	"LOGS" => "log/",
+	"TEMP" => "tmp/",
+	"LOCALES" => "app/dict/",
+	"CACHE" => true,
+	"AUTOLOAD" => "app/",
+	"PACKAGE" => "F3MVC",
+	"microtime" => microtime(true),
+	"site.url" => $fw->get("SCHEME") . "://" . $fw->get("HOST") . $fw->get("BASE") . "/"
+));
 
 // Connect to configured database
 if($fw->get("db.host")) {
@@ -70,7 +81,7 @@ class App {
 	 * @param string $view
 	 */
 	public static function render($view) {
-		\Template::instance()->render($view);
+		return \Template::instance()->render($view);
 	}
 
 	/**
