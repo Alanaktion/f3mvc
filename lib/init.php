@@ -166,7 +166,7 @@ abstract class Model extends \DB\SQL\Mapper {
 
 }
 
-abstract class Base {
+abstract class Controller {
 
 	/**
 	 * Require a user to be logged in. Redirects to /login if a session is not found.
